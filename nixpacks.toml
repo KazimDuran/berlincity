@@ -4,9 +4,10 @@ nixPkgs = ["php82", "nodejs_18", "python311Packages.supervisor"]
 [phases.install]
 cmds = [
     "curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer",
-    "composer install --no-interaction --prefer-dist --optimize-autoloader",
+    "export PATH=$PATH:/usr/local/bin && composer install --no-interaction --prefer-dist --optimize-autoloader",
     "npm install"
 ]
+
 
 [phases.build]
 cmds = [
