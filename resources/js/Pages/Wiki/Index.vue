@@ -80,7 +80,7 @@
                 </div>
 
                 <div>
-
+                    <Map />
                 </div>
             </div>
         </div>
