@@ -12,13 +12,13 @@
 import { onMounted } from 'vue'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import gta5 from '@/Assets/images/gta5.webp'
+import gta5 from '@/Assets/images/RDMP.png'
 import policeIcon from '@/Assets/images/icons/test.png';
 import hospitalIcon from '@/Assets/images/icons/test.png';
 
 onMounted(() => {
     // Leaflet-Karte initialisieren
-    const width = 3000;
+    const width = 7000;
     const height = 4000;
     const map = L.map('map', {
         crs: L.CRS.Simple,
@@ -72,7 +72,7 @@ onMounted(() => {
 }
 
 #map {
-    background-color: #3e4f55; /* Deine gewünschte Hintergrundfarbe */
+    background-color: #1D1D1D; /* Deine gewünschte Hintergrundfarbe */
 }
 
 </style>

@@ -4,7 +4,7 @@
             <!-- Logo & Wiki-Label -->
             <div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-center">
                 <img src="@/Assets/images/logo.png" class="w-32 sm:w-40 drop-shadow-[0px_0px_15px_rgba(255,255,255,0.4)]" alt="test" />
-                <div class="stevie-sans-book-italic flex items-center bg-red-800 rounded-md mt-2 sm:mt-0 sm:ml-3 px-4 h-7 drop-shadow-[0px_0px_10px_rgba(255,255,255,0.2)]">
+                <div class="stevie-sans-book-italic flex items-center bg-red-800/60 drop-shadow-[0px_0px_10px_rgba(255,255,255,0.4)] rounded-md mt-2 sm:mt-0 sm:ml-3 px-4 h-7 ">
                     <div class="-ml-1 drop-shadow-[0px_0px_10px_rgba(255,255,255,1)]">
                         WIKI
                     </div>
@@ -21,7 +21,7 @@
                     <div class="text-center md:text-left flex-1">
                         <h2 class="text-lg stevie-sans-bold text-center">Allgemeine Kategorien</h2>
                         <p class="mb-4 text-sm text-gray-500 stevie-sans-book text-center mt-3">
-                            Hier können Sie alle Informationen über den Belin City Server und seine Features finden.
+                            Hier können Sie alle Informationen über den Westpoint Server und seine Features finden.
                         </p>
                         <!-- NEU -->
                         <div class="relative w-full" ref="searchContainer">
@@ -39,7 +39,7 @@
                                     v-model="query"
                                     @keyup.enter="search"
                                     @focus="isFocused = true"
-                                    placeholder="Suche nach Informationen auf BerlinCity Wiki"
+                                    placeholder="Suche nach Informationen auf Westpoin Wiki"
                                     class="border pl-10 pr-10 p-2 rounded w-full mb-4 mt-5 bg-[#2d2d2d] text-white focus:outline-none focus:ring-0 focus:border-red-800 active:outline-none active:ring-0"
                                 />
 
@@ -80,7 +80,7 @@
                 </div>
 
                 <div>
-
+                    <Map />
                 </div>
             </div>
         </div>

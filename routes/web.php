@@ -15,9 +15,18 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/', function () {
+    return Inertia::render('Welcome');
+})->name('welcome');
+
+
 Route::get('/wiki', function () {
     return Inertia::render('Wiki/Index');
 })->name('wiki.index');
+
+Route::get('/faq', function () {
+    return Inertia::render('Faq');
+})->name('faq');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
