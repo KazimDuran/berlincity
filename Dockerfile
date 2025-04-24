@@ -1,37 +1,35 @@
-FROM php:8.2-apache
+# Build stage for frontend
+FROM node:18 AS node-builder
 
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
-ENV APACHE_LOCK_DIR /var/lock/apache2
-ENV APACHE_PID_FILE /var/run/apache2/apache2.pid
-ENV APACHE_RUN_DIR /var/run/apache2
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
+# PHP base image
+FROM php:8.2-fpm
 
-# Systempakete + PHP-Erweiterungen
+# Install system deps
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libonig-dev libxml2-dev libzip-dev \
-    && docker-php-ext-install pdo_mysql mbstring zip
+    git curl zip unzip libpng-dev libonig-dev libxml2-dev libzip-dev \
+    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
-# Composer installieren
+# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# App-Code rein
-COPY . /var/www/html
+# App setup
+WORKDIR /var/www
+COPY . .
 
-# Rechte setzen
-RUN chown -R www-data:www-data /var/www/html
+# Copy built frontend assets
+COPY --from=node-builder /app/public /var/www/public
 
-# Apache config
-COPY ./docker/apache.conf /etc/apache2/sites-available/000-default.conf
-RUN a2enmod rewrite
-
-WORKDIR /var/www/html
-
-# Abhängigkeiten installieren
+# Install PHP deps
 RUN composer install --no-dev --optimize-autoloader
 
-EXPOSE 80
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+# Set permissions
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-
+EXPOSE 9000
+CMD ["php-fpm"]
