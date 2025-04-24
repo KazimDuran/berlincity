@@ -1,16 +1,14 @@
-# Build stage for frontend (Vue + Inertia)
-FROM node:18 AS node-builder
+# Node-Stage: nur Abhängigkeiten installieren
+FROM node:18 AS node-deps
 
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY . .
-RUN npm run build
 
-# PHP base image
+# PHP-Stage
 FROM php:8.2-fpm
 
-# System-Abhängigkeiten
+# System Abhängigkeiten
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libpng-dev libonig-dev libxml2-dev libzip-dev \
     && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
@@ -18,27 +16,24 @@ RUN apt-get update && apt-get install -y \
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Arbeitsverzeichnis
 WORKDIR /var/www
 
-# App-Dateien
+# App-Code kopieren
 COPY . .
 
-# Composer (damit Ziggy etc. verfügbar ist)
+# Composer installieren (damit Ziggy existiert)
 RUN composer install --no-dev --optimize-autoloader
 
-# Frontend: Nur build-Output übernehmen (nicht node_modules!)
-COPY --from=node-builder /app/public /var/www/public
-COPY --from=node-builder /app/resources/js /var/www/resources/js
-COPY --from=node-builder /app/resources/css /var/www/resources/css
+# Node modules + build jetzt (nach Composer)
+COPY --from=node-deps /app/node_modules ./node_modules
+COPY package*.json ./
+RUN npm run build
 
-# Rechte setzen
+# Berechtigungen setzen
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-# Expose Port für Dokku
-EXPOSE 5000
-
-# php-fpm auf Port 5000 (ohne eigene www.conf)
+# PHP-FPM auf Port 5000 umstellen (für Dokku)
 RUN sed -i 's/9000/5000/' /usr/local/etc/php-fpm.d/www.conf
 
+EXPOSE 5000
 CMD ["php-fpm"]
