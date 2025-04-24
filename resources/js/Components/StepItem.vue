@@ -56,28 +56,8 @@ import { ref } from 'vue'
 
 const steps = [
     {
-<<<<<<< HEAD
-        text: 'Kaufe und installiere GTA 5<br /> Spiel bereits vorhanden? – Nächster Schritt',
-        buttons: ['STEAM', 'EPIC GAMES', 'ROCKSTAR'],
-    },
-    {
         text: 'Lade herunter und installiere<br />FiveM Multiplayer',
         button: 'DOWNLOAD FIVEM',
-    },
-    {
-        text: 'Starte FiveM und<br />suche nach Berlin City und trete bei!',
-=======
-        text: 'Kaufe und installiere Red Dead Redemption 2<br /> Spiel bereits vorhanden? – Nächster Schritt',
-        buttons: ['STEAM', 'EPIC GAMES', 'ROCKSTAR'],
-    },
-    {
-        text: 'Lade herunter und installiere<br />RedM Multiplayer',
-        button: 'DOWNLOAD RedM',
-    },
-    {
-        text: 'Starte RedM und<br />suche nach <span class="uppercase font-bold">Westpoint</span> und trete bei!',
->>>>>>> 58fd99ecee3a843110a77c34f6789dd1f0ff42aa
-        button: 'Server beitreten',
     },
 ]
 
