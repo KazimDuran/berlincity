@@ -37,7 +37,9 @@ RUN npm run build
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 # PHP-FPM auf Port 5000 umstellen (für Dokku)
-RUN sed -i 's/9000/5000/' /usr/local/etc/php-fpm.d/www.conf
+#RUN sed -i 's/9000/5000/' /usr/local/etc/php-fpm.d/www.conf
 
-EXPOSE 5000
-CMD ["php-fpm"]
+EXPOSE 9000
+CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "--nodaemonize"]
+
+
