@@ -2,27 +2,23 @@
 import { Head } from '@inertiajs/vue3';
 import NavBar from "@/Components/NavBar.vue";
 import { ref } from "vue";
-
-// Image imports
 import Image1 from "@/Assets/images/bg4.png";
 import Image2 from "@/Assets/images/bg5.png";
 import Image3 from "@/Assets/images/bg6.png";
-import Image4 from "@/Assets/images/bg7.png"; // global
+import Image4 from "@/Assets/images/bg7.png";
 import Image5 from "@/Assets/images/bg8.png";
 import Image6 from "@/Assets/images/bg9.png";
 import Image7 from "@/Assets/images/bg10.png";
-import police from "@/Assets/images/police.png";
-import medizin from "@/Assets/images/mediziner.png";
-import military from "@/Assets/images/army.png";
-import gangster from "@/Assets/images/gangstar.png";
+import sheriff from "@/Assets/images/sheriff.png";
+import banditen from "@/Assets/images/banditen.png";
+import mediziner from "@/Assets/images/mediziner.png";
+import arbeiter from "@/Assets/images/arbeiter.png";
+import army from "@/Assets/images/army.png";
 import geschaft from "@/Assets/images/geschaft.png";
-import worker from "@/Assets/images/worker.png";
-
-
 import Image1_Outline from "@/Assets/images/bg4_outline.png";
 import Image2_Outline from "@/Assets/images/bg5_outline.png";
 import Image3_Outline from "@/Assets/images/bg6_outline.png";
-import Image4_Outline from "@/Assets/images/bg7_outline.png"; // global
+import Image4_Outline from "@/Assets/images/bg7_outline.png";
 import Image5_Outline from "@/Assets/images/bg8_outline.png";
 import Image6_Outline from "@/Assets/images/bg9_outline.png";
 import Image7_Outline from "@/Assets/images/bg10_outline.png";
@@ -31,7 +27,6 @@ import Footer from "@/Components/Footer.vue";
 import Slider from "@/Components/Slider.vue";
 import Gallery from "@/Components/Gallery.vue";
 
-// Hover states
 const globalHover = ref(false); // nur Bild 4
 const hoveredIndex = ref<number | null>(null);
 
@@ -41,15 +36,15 @@ const images = [
         outline: Image1_Outline,
         alt: 'Screenshot 1',
         global: false,
-        character: police,
-        title: 'Werde Polizist',
+        character: sheriff,
+        title: 'Werde Sheriff',
     },
     {
         src: Image2,
         outline: Image2_Outline,
         alt: 'Screenshot 2',
         global: false,
-        character: medizin,
+        character: mediziner,
         title: 'Werde Mediziner',
     },
     {
@@ -57,8 +52,8 @@ const images = [
         outline: Image3_Outline,
         alt: 'Screenshot 3',
         global: false,
-        character: gangster,
-        title: 'Werde Mechaniker',
+        character: army,
+        title: 'Werde Army',
     },
     {
         src: Image4,
@@ -73,8 +68,8 @@ const images = [
         outline: Image5_Outline,
         alt: 'Screenshot 5',
         global: false,
-        character: military,
-        title: 'Werde Held',
+        character: banditen,
+        title: 'Werde Bandit',
     },
     {
         src: Image6,
@@ -82,21 +77,19 @@ const images = [
         alt: 'Screenshot 6',
         global: false,
         character: geschaft,
-        title: 'Werde Held',
+        title: 'Werde Geschäftsmann',
     },
     {
         src: Image7,
         outline: Image7_Outline,
         alt: 'Screenshot 7',
         global: false,
-        character: worker,
-        title: 'Werde Held',
+        character: arbeiter,
+        title: 'Werde Arbeiter',
     },
 ];
 
-
 function handleMouseEnter(img: { global: boolean }, index: number) {
-    console.log("Hovered:", index, "Global:", img.global);
     if (img.global) {
         globalHover.value = true;
         hoveredIndex.value = null;
@@ -105,29 +98,6 @@ function handleMouseEnter(img: { global: boolean }, index: number) {
         globalHover.value = false;
     }
 }
-
-const steps = [
-    {
-        title: 'GTA V kaufen',
-        description: 'Besorge dir eine legale Kopie von GTA V über Steam, Epic Games oder Rockstar Launcher.',
-        image: '/images/step1.png',
-    },
-    {
-        title: 'FiveM installieren',
-        description: 'Lade dir den FiveM-Client von fivem.net herunter und installiere ihn auf deinem PC.',
-        image: '/images/step2.png',
-    },
-    {
-        title: 'Nach Berlin City suchen',
-        description: 'Starte FiveM, öffne den Server-Browser und suche nach "Berlin City".',
-        image: '/images/step3.png',
-    },
-    {
-        title: 'Beitreten & Losspielen',
-        description: 'Wähle den Server aus, trete bei und erlebe Berlin City RP in voller Action!',
-        image: '/images/step4.png',
-    },
-];
 
 function handleMouseLeave() {
     globalHover.value = false;
@@ -246,7 +216,7 @@ function handleMouseLeave() {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('@/Assets/images/Download.webp');
+    background-image: url('@/Assets/images/Background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

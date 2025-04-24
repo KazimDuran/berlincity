@@ -4,7 +4,7 @@
             <div class="relative flex h-16 justify-between">
                 <div class="relative z-10 flex px-2 lg:px-0">
                     <div class="flex shrink-0 items-center">
-                        <img class="h-12 w-auto" src="@/Assets/images/logo.png" alt="Your Company" />
+                        <img class="h-12 w-auto drop-shadow-[0px_0px_14px_rgba(255,255,255,0.5)]" src="@/Assets/images/logo.png" alt="Your Company" />
                     </div>
                 </div>
                 <div class="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
@@ -59,9 +59,9 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-    { name: 'Startseite', href: '#', current: true },
+    { name: 'Startseite', href: route('welcome'), current: true },
     { name: 'Wiki', href: route('wiki.index'), current: false },
-    { name: 'FAQ', href: '#', current: false },
+    { name: 'FAQ', href: route('faq'), current: false },
     { name: 'Neuigkeiten', href: '#', current: false },
 ]
 
