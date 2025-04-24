@@ -31,5 +31,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Set permissions
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-EXPOSE 9000
-CMD ["php-fpm"]
+EXPOSE 5000
+CMD ["php-fpm", "-F", "-y", "/usr/local/etc/php-fpm.conf", "--nodaemonize"]
+
