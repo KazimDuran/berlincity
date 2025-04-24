@@ -24,4 +24,5 @@ WORKDIR /var/www/html
 RUN composer install --no-dev --optimize-autoloader
 
 EXPOSE 80
-CMD ["apache2-foreground"]
+CMD exec apache2 -DFOREGROUND
+
