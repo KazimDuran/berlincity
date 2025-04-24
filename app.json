@@ -1,0 +1,13 @@
+{
+    "name": "berlincity",
+    "scripts": {},
+    "formation": {
+        "web": {
+            "healthcheck": {
+                "port": 9000,
+                    "protocol": "http",
+                    "path": "/"
+            }
+        }
+    }
+}
