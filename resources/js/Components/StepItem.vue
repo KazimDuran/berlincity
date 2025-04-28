@@ -59,6 +59,14 @@ const steps = [
         text: 'Lade herunter und installiere<br />FiveM Multiplayer',
         button: 'DOWNLOAD FIVEM',
     },
+    {
+        text: 'Lade herunter und installiere<br />FiveM Multiplayer',
+        button: 'DOWNLOAD FIVEM',
+    },
+    {
+        text: 'Lade herunter und installiere<br />FiveM Multiplayer',
+        button: 'DOWNLOAD FIVEM',
+    },
 ]
 
 // Initial styles per card
