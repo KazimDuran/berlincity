@@ -62,6 +62,21 @@ return [
             ]) : [],
         ],
 
+        'fivem' => [
+            'driver' => 'mysql',
+            'host' => env('FIVEM_DB_HOST', '127.0.0.1'),
+            'port' => env('FIVEM_DB_PORT', '3306'),
+            'database' => env('FIVEM_DB_DATABASE', 'forge'),
+            'username' => env('FIVEM_DB_USERNAME', 'forge'),
+            'password' => env('FIVEM_DB_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

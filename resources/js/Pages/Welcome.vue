@@ -69,7 +69,7 @@ const images = [
         alt: 'Screenshot 5',
         global: false,
         character: banditen,
-        title: 'Werde Bandit',
+        title: 'Werde Gangster',
     },
     {
         src: Image6,
@@ -189,7 +189,6 @@ function handleMouseLeave() {
 
                 </div>
             </div>
-
 
             <div class="py-14 sm:py-24">
                 <div class="mx-auto max-w-[1420px] px-6 py-12 lg:px-8">
