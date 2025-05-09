@@ -14,28 +14,26 @@ function toggleFaq(question: string) {
 
 const faqs = [
     {
-        id: 1,
-        question: "What's the best thing about Switzerland?",
-        answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question: "Wie installiere ich SaltyChat und verbinde es mit dem Server?",
+        answer: "Hier kannst du dir den aktuellsten SaltyChat herunterladen: <a href='https://gaming.v10networks.com/SaltyChat' target='_blank' class='underline text-blue-400'>SaltyChat Download</a>. Danach verbindest du dich über TeamSpeak mit <strong>berlin-city</strong>."
     },
     {
         id: 2,
-        question: "Why do programmers prefer dark mode?",
+        question: "Was bedeutet Mid-Core RP bei BerlinCity?",
         answer:
-            "Because the light attracts bugs. Plus, it looks cooler!",
+            "Wir setzen auf authentisches Rollenspiel ohne Hardcore-Zwang oder Gambo-Chaos. RP soll Spaß machen – mit Regeln, aber ohne RP-Polizei.",
     },
     {
         id: 3,
-        question: "How do you comfort a JavaScript bug?",
+        question: "Kann ich eigene Unternehmen gründen?",
         answer:
-            "You console it. Sometimes even log its feelings.",
+            "Ja! Wenn du eine Idee hast, kannst du bei der Stadtverwaltung ein Konzept einreichen. Bei Erfolg bekommst du Support durch das Team.",
     },
     {
         id: 4,
-        question: "Why was the math book sad?",
+        question: "Wann ist der offizielle Release?",
         answer:
-            "Because it had too many problems. Classic.",
+            "Der Release ist aktuell in Planung. Folge uns auf <a href='https://discord.gg/berlincity' target='_blank' class='underline text-blue-400'>Discord</a> für alle Updates und Sneak Peaks!",
     },
 ];
 
@@ -70,18 +68,19 @@ const faqsMore = [
         <NavBar />
 
         <div class="mx-auto max-w-6xl px-6 py-16 sm:py-24 lg:px-8">
-            <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Frequently asked questions</h2>
-            <p class="mt-6 max-w-2xl text-base/7 text-gray-300">Have a different question and can’t find the answer you’re looking for? Reach out to our support team by <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">sending us an email</a> and we’ll get back to you as soon as we can.</p>
+            <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Häufig gestellte Fragen</h2>
+            <p class="mt-6 max-w-2xl text-base/7 text-gray-300">
+                Du hast eine andere Frage und konntest die Antwort nicht finden? Melde dich einfach bei unserem Support-Team auf <a href="https://discord.gg/berlincity" class="font-semibold text-indigo-400 hover:text-indigo-300">Discord</a> und wir werden dir so schnell wie möglich weiterhelfen.
+            </p>
             <div class="mt-20">
                 <dl class="space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:gap-x-10">
                     <div v-for="faq in faqs" :key="faq.id">
                         <dt class="text-base/7 font-semibold text-white">{{ faq.question }}</dt>
-                        <dd class="mt-2 text-base/7 text-gray-300">{{ faq.answer }}</dd>
+                        <div class="text-base/7 text-gray-300" v-html="faq.answer"></div>
                     </div>
                 </dl>
             </div>
 
-            <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl mt-16">Frequently asked questions</h2>
             <dl class="mt-16 divide-y divide-white/10">
                 <div
                     v-for="faq in faqsMore"
@@ -101,7 +100,7 @@ const faqsMore = [
                         </button>
                     </dt>
                     <dd v-if="openFaq === faq.question" class="mt-2 pr-12">
-                        <p class="text-base/7 text-gray-300">{{ faq.answer }}</p>
+                        <div class="text-base/7 text-gray-300" v-html="faq.answer"></div>
                     </dd>
                 </div>
             </dl>

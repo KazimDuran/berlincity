@@ -46,4 +46,7 @@ Route::prefix('wiki')->group(function () {
     Route::get('/{slug}', [WikiController::class, 'show'])->where('slug', '.*')->name('wiki.show');
 });
 
+
 require __DIR__.'/auth.php';
+
+
